@@ -158,7 +158,11 @@ def handle_retrieve_data():
             entry = st.session_state.stored_data.get(data_id)
             if entry and entry["passkey"] == hash_passkey(passkey):
                 st.success("Decrypted:")
-                st.text_area("", value=decrypt_data(entry["encrypted"]), height=200)
+                # Fixed text_area with proper label visibility
+                st.text_area("Decrypted content:", 
+                            value=decrypt_data(entry["encrypted"]), 
+                            height=200,
+                            label_visibility="collapsed")
                 st.session_state.failed_attempts = 0
             else:
                 handle_failed_attempt()
@@ -184,9 +188,6 @@ def handle_login():
 
 if __name__ == "__main__":
     main()
-
-
-
 
 
 
