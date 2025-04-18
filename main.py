@@ -98,18 +98,21 @@
 #     menu = ["Home", "Store Data", "Retrieve Data", "Login"]
 #     choice = st.sidebar.selectbox("Menu", menu, key="nav_choice")
     
+#     # Pages
 #     if choice == "Home":
-#         st.subheader("🏠 Welcome")
-#         col1, col2 = st.columns(2)
-#         col1.button("📥 Store Data", on_click=lambda: set_redirect("Store Data"))
-#         col2.button("📤 Retrieve Data", on_click=lambda: set_redirect("Retrieve Data"))
-        
+#         st.subheader("🏠 Welcome to the Secure Data System")
+#         st.write("Use this app to **securely store and retrieve data** using unique passkeys.")
+#         st.write("### Features:")
+#         st.write("- 🔐 Military-grade encryption using Fernet")
+#         st.write("- 🚫 Automatic lockout after 3 failed attempts")
+#         st.write("- 💾 In-memory data storage")
+#         
 #     elif choice == "Store Data":
 #         handle_store_data()
-    
+#     
 #     elif choice == "Retrieve Data":
 #         handle_retrieve_data()
-    
+#     
 #     elif choice == "Login":
 #         handle_login()
 
@@ -123,7 +126,7 @@
 #         data_id = st.text_input("Unique ID:")
 #         data = st.text_area("Secret Data:")
 #         passkey = st.text_input("Passkey:", type="password")
-        
+#         
 #         if st.form_submit_button("Encrypt"):
 #             if all([data_id, data, passkey]):
 #                 if data_id in st.session_state.stored_data:
@@ -143,7 +146,7 @@
 #     with st.form("retrieve_form"):
 #         data_id = st.text_input("Data ID:")
 #         passkey = st.text_input("Passkey:", type="password")
-        
+#         
 #         if st.form_submit_button("Decrypt"):
 #             entry = st.session_state.stored_data.get(data_id)
 #             if entry and entry["passkey"] == hash_passkey(passkey):
@@ -173,7 +176,7 @@
 #             if not correct_pass:
 #                 st.error("Admin password not configured!")
 #                 return
-            
+#             
 #             if hashlib.sha256(password.encode()).hexdigest() == hashlib.sha256(correct_pass.encode()).hexdigest():
 #                 st.session_state.failed_attempts = 0
 #                 set_redirect("Retrieve Data")
@@ -351,10 +354,12 @@ def main():
     
     # Pages
     if choice == "Home":
-        st.subheader("🏠 Welcome")
-        col1, col2 = st.columns(2)
-        col1.button("📥 Store Data", on_click=lambda: set_redirect("Store Data"))
-        col2.button("📤 Retrieve Data", on_click=lambda: set_redirect("Retrieve Data"))
+        st.subheader("🏠 Welcome to the Secure Data System")
+        st.write("Use this app to **securely store and retrieve data** using unique passkeys.")
+        st.write("### Features:")
+        st.write("- 🔐 Military-grade encryption using Fernet")
+        st.write("- 🚫 Automatic lockout after 3 failed attempts")
+        st.write("- 💾 In-memory data storage")
         
     elif choice == "Store Data":
         handle_store_data()
