@@ -1,3 +1,6 @@
+# Add these lines at the top after other imports
+from dotenv import load_dotenv
+load_dotenv()  # This loads variables from .env file
 
 import streamlit as st
 import hashlib
