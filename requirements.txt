@@ -1,4 +1,4 @@
 # requirements.txt
-sstreamlit
+streamlit
 cryptography
 python-dotenv
